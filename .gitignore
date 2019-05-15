@@ -10,3 +10,6 @@ bundle.js.map
 /node_modules
 
 .byebug_history
+
+npm-debug.log
+.DS_Store
