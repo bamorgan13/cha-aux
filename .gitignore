@@ -1,4 +1,6 @@
 /.bundle
+bundle.js
+bundle.js.map
 
 /log/*
 /tmp/*
