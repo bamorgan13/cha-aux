@@ -29,6 +29,9 @@
 		background-color: $dark-grey;
 		border-radius: 5px;
 		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+		div {
+			margin: 0, 0, 20px;
+		}
 		.session-form-header {
 			text-align: center;
 			h1 {
@@ -43,6 +46,7 @@
 		label {
 			color: $light-grey;
 			font-weight: bold;
+			margin: 0, 0, 8px;
 		}
 		input {
 			border-radius: 3px;

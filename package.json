@@ -19,7 +19,8 @@
 	"devDependencies": {
 		"redux-logger": "^3.0.6"
 	},
-	"description": "This README would normally document whatever steps are necessary to get the application up and running.",
+	"description":
+		"This README would normally document whatever steps are necessary to get the application up and running.",
 	"version": "1.0.0",
 	"main": "index.js",
 	"directories": {
@@ -43,7 +44,7 @@
 	},
 	"homepage": "https://github.com/bamorgan13/cha-aux#readme",
 	"engines": {
-		"node": "10.13.0",
-		"npm": "6.4.1"
+		"node": "8.4.0",
+		"npm": "6.1.0"
 	}
 }
