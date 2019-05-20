@@ -79,6 +79,7 @@ class SessionForm extends React.Component {
 
 		return (
 			<div className="session-form-container">
+				<div className="session-form-logo">(logo)</div>
 				<form className="session-form" onSubmit={this.handleSubmit}>
 					{formHeader}
 					<div className="session-form-input-email">
