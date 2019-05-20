@@ -43,7 +43,7 @@
 	},
 	"homepage": "https://github.com/bamorgan13/cha-aux#readme",
 	"engines": {
-		"node": "10.13.0",
-		"npm": "6.4.1"
+		"node": "8.4.0",
+		"npm": "6.1.0"
 	}
 }
