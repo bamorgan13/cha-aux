@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
 			password: ''
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.demoLogin = this.demoLogin.bind(this);
 	}
 
 	componentWillUnmount() {
@@ -28,6 +29,11 @@ class SessionForm extends React.Component {
 				[field]: e.currentTarget.value
 			});
 		};
+	}
+
+	demoLogin(e) {
+		e.preventDefault();
+		this.props.demoLogin({ username: 'user1', email: 'user1@gmail.com', password: 'asdfasdf' });
 	}
 
 	render() {
@@ -58,6 +64,10 @@ class SessionForm extends React.Component {
 			formFooter = (
 				<div className="session-form-footer">
 					<Link to="/login">Already have an account?</Link>
+					<p>&nbsp;or&nbsp;</p>
+					<button onClick={this.demoLogin} className="demo-button">
+						View a Demo Account
+					</button>
 				</div>
 			);
 		} else {
@@ -73,6 +83,10 @@ class SessionForm extends React.Component {
 				<div className="session-form-footer">
 					<p>Need an account?</p>
 					<Link to="/signup">&nbsp;Register</Link>
+					<p>&nbsp;or&nbsp;</p>
+					<button onClick={this.demoLogin} className="demo-button">
+						View a Demo Account
+					</button>
 				</div>
 			);
 		}

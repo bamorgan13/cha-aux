@@ -9,7 +9,8 @@ const msp = state => ({
 
 const mdp = dispatch => ({
 	processForm: user => dispatch(login(user)),
-	clearErrors: () => dispatch(clearErrors())
+	clearErrors: () => dispatch(clearErrors()),
+	demoLogin: user => dispatch(login(user))
 });
 
 export default connect(msp, mdp)(SessionForm);

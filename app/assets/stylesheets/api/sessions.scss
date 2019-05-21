@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'variables';
 
+@keyframes entry {
+	0% {
+		width: 800px;
+		opacity: 0;
+	}
+	60% {
+		width: 300px;
+		opacity: 0.6;
+	}
+}
+
 .session-background {
 	height: 100%;
 	background-image: image_url('session_background.jpg');
@@ -45,22 +56,30 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
+			animation-name: entry;
+			animation-duration: 0.2s;
+			animation-timing-function: ease-in;
+
 			div {
 				height: 64px;
 				padding: 5px 0;
 			}
+
 			.session-form-header {
 				text-align: center;
 				height: 36px;
+
 				h1 {
 					color: $white;
 					font-size: 26px;
 				}
+
 				h3 {
 					color: $grey;
 					font-size: 18px;
 				}
 			}
+
 			label {
 				color: $light-grey;
 				font-size: 12px;
@@ -68,6 +87,7 @@
 				font-weight: bold;
 				text-transform: uppercase;
 			}
+
 			input {
 				border-radius: 3px;
 				box-sizing: border-box;
@@ -76,28 +96,39 @@
 				height: 40px;
 				color: $white;
 			}
+
 			input[type='text'],
 			input[type='password'] {
 				background-color: rgba(0, 0, 0, 0.1);
 				border: 1px solid $black;
+
 				&:focus {
 					border: 1px solid $purple;
 				}
 			}
+
 			input[type='submit'] {
 				background-color: $purple;
 				color: $white;
 				text-align: center;
 			}
+
 			.session-form-footer {
 				display: flex;
 				height: 30px;
 				padding-top: 10px;
+
 				p {
 					color: $grey;
 				}
+
 				a {
 					color: $purple;
+				}
+
+				.demo-button {
+					color: $purple;
+					height: 1em;
 				}
 			}
 		}
