@@ -71,30 +71,32 @@ class SessionForm extends React.Component {
 
 			formFooter = (
 				<div className="session-form-footer">
-					<p>Need an account? </p>
-					<Link to="/signup">Register</Link>
+					<p>Need an account?</p>
+					<Link to="/signup">&nbsp;Register</Link>
 				</div>
 			);
 		}
 
 		return (
-			<div className="session-form-container">
-				<div className="session-form-logo">(logo)</div>
-				<form className="session-form" onSubmit={this.handleSubmit}>
-					{formHeader}
-					<div className="session-form-input-email">
-						<label>Email</label>
-						<input type="text" value={this.state.email} onChange={this.update('email')} />
-					</div>
-					{usernameInput}
-					<div className="session-form-input-password">
-						<label>Password</label>
-						<input type="password" value={this.state.password} onChange={this.update('password')} />
-					</div>
-					<ul className="session-errors-list">{errorsList}</ul>
-					<input type="submit" value={buttonText} />
-					{formFooter}
-				</form>
+			<div className="session-background">
+				<div className="session-form-container">
+					<div className="session-form-logo">cha-aux</div>
+					<form className="session-form" onSubmit={this.handleSubmit}>
+						{formHeader}
+						<div className="session-form-input-email">
+							<label>Email</label>
+							<input type="text" value={this.state.email} onChange={this.update('email')} />
+						</div>
+						{usernameInput}
+						<div className="session-form-input-password">
+							<label>Password</label>
+							<input type="password" value={this.state.password} onChange={this.update('password')} />
+						</div>
+						<ul className="session-errors-list">{errorsList}</ul>
+						<input type="submit" value={buttonText} />
+						{formFooter}
+					</form>
+				</div>
 			</div>
 		);
 	}
