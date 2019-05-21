@@ -5,8 +5,10 @@ const SplashNav = () => {
 	return (
 		<header className="splash-header">
 			<nav className="splash-header-nav">
-				<div className="splash-nav-logo">(logo_icon)</div>
-				<Link to="/login">Login</Link>
+				<Link to="/" className="splash-nav-logo" />
+				<Link to="/login" className="splash-nav-login">
+					Login
+				</Link>
 			</nav>
 		</header>
 	);

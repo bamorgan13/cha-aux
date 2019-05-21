@@ -4,6 +4,63 @@
 @import 'variables';
 
 .app {
-	background-color: $light-grey;
+	background-color: $almost-black;
 	height: 100%;
+	font-family: $font;
+
+	.splash {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: $light-grey;
+		font-size: 16px;
+
+		.splash-header {
+			width: 90%;
+
+			.splash-header-nav {
+				height: 72px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				color: $light-grey;
+
+				.splash-nav-logo {
+					background-image: image_url('logo_icon_white.png');
+					background-repeat: no-repeat;
+					background-size: contain;
+					height: 36px;
+					width: 36px;
+				}
+
+				.splash-nav-login {
+					padding: 5px 15px;
+					border: 2px solid;
+					border-radius: 20px;
+
+					&:hover {
+						color: $white;
+					}
+				}
+			}
+		}
+
+		.splash-hook-header {
+			color: $white;
+			font-size: 36px;
+			font-weight: bold;
+		}
+
+		.splash-hook-body {
+		}
+
+		.splash-hook-button {
+			background-color: $purple;
+			color: $white;
+			border-radius: 3px;
+			text-align: center;
+			width: 200px;
+			padding: 10px;
+		}
+	}
 }

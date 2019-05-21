@@ -7,12 +7,16 @@ const Splash = () => {
 	return (
 		<div className="splash">
 			<SplashNav />
-			<h1>It's time to ditch Skype and TeamSpeak.</h1>
-			<p>
+			<h1 className="splash-hook-header">It's time to ditch Skype and TeamSpeak.</h1>
+			<p className="splash-hook-body">
 				All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
 			</p>
-			<p>Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.</p>
-			<Link to="/login">Open Cha-aux in your browser</Link>
+			<p className="splash-hook-body">
+				Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.
+			</p>
+			<Link to="/login" className="splash-hook-button">
+				Open Cha-aux in your browser
+			</Link>
 			<SplashFooter />
 		</div>
 	);
