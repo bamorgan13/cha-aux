@@ -30,8 +30,13 @@
 					background-image: image_url('logo_icon_white.png');
 					background-repeat: no-repeat;
 					background-size: contain;
+					width: 130px;
 					height: 36px;
-					width: 36px;
+					text-align: right;
+					font-size: 34px;
+					letter-spacing: -1px;
+					text-transform: lowercase;
+					color: $white;
 				}
 
 				.splash-nav-login {
@@ -90,6 +95,7 @@
 			width: 60%;
 
 			.splash-footer-nav {
+				padding: 20px 0;
 				display: flex;
 				justify-content: space-between;
 
@@ -101,6 +107,7 @@
 
 					h3 {
 						color: $light-grey;
+						text-transform: uppercase;
 					}
 				}
 

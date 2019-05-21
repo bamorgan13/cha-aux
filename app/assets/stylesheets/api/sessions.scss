@@ -35,9 +35,8 @@
 			background-repeat: no-repeat;
 			background-size: contain;
 			position: absolute;
-			top: 40px;
-			left: 50%;
-			margin-left: -65px;
+			top: 50px;
+			left: 50px;
 			width: 130px;
 			height: 36px;
 			text-align: right;
@@ -49,7 +48,7 @@
 
 		.session-form {
 			width: 400px;
-			padding: 40px;
+			padding: 40px 40px 30px;
 			background-color: $dark-grey;
 			border-radius: 5px;
 			box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
@@ -60,18 +59,31 @@
 			animation-duration: 0.2s;
 			animation-timing-function: ease-in;
 
+			[class|='session-form-input'] {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+
 			div {
 				height: 64px;
 				padding: 5px 0;
 			}
 
+			.session-form-input-password {
+				padding: 5px 0 15px;
+			}
+
 			.session-form-header {
-				text-align: center;
-				height: 36px;
+				height: 60px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-between;
 
 				h1 {
 					color: $white;
-					font-size: 26px;
+					font-size: 30px;
 				}
 
 				h3 {
