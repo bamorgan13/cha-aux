@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { logout } from '../actions/session_actions';
 
 const mdp = dispatch => {
-	debugger;
 	return {
 		logout: () => dispatch(logout())
 	};
