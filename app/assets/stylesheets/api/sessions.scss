@@ -119,6 +119,11 @@
 				}
 			}
 
+			.session-errors-list {
+				color: $red;
+				padding: 0 0 5px;
+			}
+
 			input[type='submit'] {
 				background-color: $purple;
 				color: $white;
