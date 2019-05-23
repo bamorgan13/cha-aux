@@ -27,30 +27,30 @@ const receiveServerErrors = errors => {
 
 export const getServers = filters => dispatch => {
 	return APIUtil.getServers(filters).then(servers =>
-		dispatch(receiveServers(servers), errors => dispatch(receiveServerErrors))
+		dispatch(receiveServers(servers), errors => dispatch(receiveServerErrors(errors)))
 	);
 };
 
 export const getServer = id => dispatch => {
 	return APIUtil.getServer(id).then(server =>
-		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors))
+		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors(errors)))
 	);
 };
 
 export const createServer = server => dispatch => {
 	return APIUtil.createServer(server).then(server =>
-		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors))
+		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors(errors)))
 	);
 };
 
 export const updateServer = server => dispatch => {
 	return APIUtil.updateServer(server).then(server =>
-		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors))
+		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors(errors)))
 	);
 };
 
 export const deleteServer = id => dispatch => {
 	return APIUtil.deleteServer(id).then(servers =>
-		dispatch(receiveServers(servers), errors => dispatch(receiveServerErrors))
+		dispatch(receiveServers(servers), errors => dispatch(receiveServerErrors(errors)))
 	);
 };
