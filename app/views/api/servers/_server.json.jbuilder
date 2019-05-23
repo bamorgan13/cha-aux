@@ -1,0 +1,1 @@
+json.extract! server, :name, :id, :owner_id, :private

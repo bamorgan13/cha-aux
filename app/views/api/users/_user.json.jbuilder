@@ -1,1 +1,2 @@
-json.extract! user, :username, :id
+json.extract! user, :id, :username
+json.joinedServerIds user.joined_servers.pluck(:id)
