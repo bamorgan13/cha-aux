@@ -4,7 +4,8 @@ import { getServers, getServer } from '../../actions/server_actions';
 
 const msp = state => {
 	return {
-		joinedServerIds: state.users[state.session.currentUserId].joinedServerIds
+		joinedServerIds: state.entities.users[state.session.id].joinedServerIds,
+		servers: state.entities.servers
 	};
 };
 
