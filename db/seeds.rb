@@ -6,22 +6,43 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+require 'faker'
+
 User.destroy_all
 Server.destroy_all
 
-User.create({username: 'Bryce', email: 'bryce@gmail.com', password: 'notpassword'})
-User.create({username: 'GabeN', email: 'GabeN@gmail.com', password: 'password'})
-User.create({username: 'Zegyr', email: 'ryon@gmail.com', password: 'password'})
-User.create({username: 'Chaos', email: 'chaos@gmail.com', password: 'password'})
-User.create({username: 'Durango', email: 'durango@gmail.com', password: 'password'})
-User.create({username: 'Jason', email: 'citronator@gmail.com', password: 'password'})
-User.create({username: 'Justin', email: 'kanman@twitch.tv', password: 'password'})
-User.create({username: 'Emmett', email: 'shearbear@twitch.tv', password: 'password'})
+user = User.create({username: 'Bryce', email: 'bryce@gmail.com', password: 'notpassword'})
+user.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/bryce_headshot.jpg'), filename:'bryce_icon.jpg')
+user = User.create({username: 'GabeN', email: 'GabeN@gmail.com', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+user = User.create({username: 'Zegyr', email: 'ryon@gmail.com', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+user = User.create({username: 'Chaos', email: 'chaos@gmail.com', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+user = User.create({username: 'Durango', email: 'durango@gmail.com', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+user = User.create({username: 'Jason', email: 'citronator@gmail.com', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+user = User.create({username: 'Justin', email: 'kanman@twitch.tv', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+user = User.create({username: 'Emmett', email: 'shearbear@twitch.tv', password: 'password'})
+user.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{user.username}_icon.jpg")
+
+User.all.each do |user|
+  user.owned_servers.create({name: 'Home', private: true})
+  user.owned_servers.first.memberships.create({user_id: user.id})
+  user.owned_servers.first.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png')
+end
 
 aa = Server.create({name: 'App Academy', owner_id: 1})
+aa.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/aa_icon.png'), filename:'aa_icon.png')
 mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: 4})
+mtga.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/mtga_icon.png'), filename:'mtga_icon.png')
 everyday = Server.create({name: 'Everyday Room', owner_id: 3})
+everyday.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/everyday_icon.jpg'), filename:'everyday_icon.jpg')
 got = Server.create({name: 'Game of Thrones', owner_id: 3})
+got.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/got_icon.jpg'), filename:'got_icon.jpg')
 
 (1..8).each { |user_id| aa.memberships.create({user_id: user_id})}
 (1..8).each { |user_id| mtga.memberships.create({user_id: user_id})}

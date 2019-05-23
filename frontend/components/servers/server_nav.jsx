@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ServerNavItem from './server_nav_item';
+
 import TempLogout from '../temp_logout';
 
 class ServerNav extends React.Component {
@@ -12,9 +14,10 @@ class ServerNav extends React.Component {
 	}
 
 	render() {
-		const serverLis = Object.keys(this.props.servers).map(serverId => (
-			<li key={serverId}>{this.props.servers[serverId].name}</li>
-		));
+		const serverLis = Object.keys(this.props.servers).map(serverId => {
+			const server = this.props.servers[serverId];
+			return <ServerNavItem key={serverId} server={server} />;
+		});
 		return (
 			<div className="server-container">
 				<nav className="server-nav">
