@@ -17,6 +17,8 @@ class User < ApplicationRecord
     through: :memberships,
     source: :joinable,
     source_type: :Server
+
+  has_one_attached :icon_image
   
   attr_reader :password
   
