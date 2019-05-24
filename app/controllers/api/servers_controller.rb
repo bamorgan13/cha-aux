@@ -17,6 +17,9 @@ class Api::ServersController < ApplicationController
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
     if @server.save
+      unless @server.icon_image.attached? {
+        @server.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png'
+      }
       @server.memberships.create({user_id: current_user.id})
       render :show
     else
@@ -42,6 +45,6 @@ class Api::ServersController < ApplicationController
   private
 
   def server_params
-    params.require(:server).permit(:name, :owner_id, :private)
+    params.require(:server).permit(:name, :owner_id, :private, :image_icon)
   end
 end
