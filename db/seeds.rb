@@ -17,7 +17,7 @@ bryce.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/bryce_h
 gaben = User.create({username: 'GabeN', email: 'GabeN@gmail.com', password: 'password'})
 gaben.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{gaben.username}_icon.jpg")
 zegyr = User.create({username: 'Zegyr', email: 'ryon@gmail.com', password: 'password'})
-zegyr.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{zegy.username}_icon.jpg")
+zegyr.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{zegyr.username}_icon.jpg")
 chaos = User.create({username: 'Chaos', email: 'chaos@gmail.com', password: 'password'})
 chaos.icon_image.attach(io: open(Faker::Avatar.image(nil,"50x50")), filename:"#{chaos.username}_icon.jpg")
 durango = User.create({username: 'Durango', email: 'durango@gmail.com', password: 'password'})
