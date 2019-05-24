@@ -7,10 +7,11 @@ const ServerNavItem = ({ server }) => {
 	const serverId = server.id;
 
 	return (
-		<li>
-			<NavLink to={`/server-discovery/${serverId}`}>
+		<li className="server-nav-li">
+			<NavLink className="server-nav-li-link" to={`/servers/${serverId}`}>
 				<img className="server-icon" src={imageUrl} alt={`${serverName}_server_icon_image`} />
 			</NavLink>
+			<span className="server-nav-li-link-name">{serverName}</span>
 		</li>
 	);
 };

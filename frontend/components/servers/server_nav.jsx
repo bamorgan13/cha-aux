@@ -18,6 +18,7 @@ class ServerNav extends React.Component {
 			const server = this.props.servers[serverId];
 			return <ServerNavItem key={serverId} server={server} />;
 		});
+		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
 		return (
 			<div className="server-container">
 				<nav className="server-nav">

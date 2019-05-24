@@ -11,6 +11,7 @@ const App = () => {
 	return (
 		<div className="app">
 			<ProtectedRoute path="/server-discovery" component={ServerNav} />
+			<ProtectedRoute path="/servers" component={ServerNav} />
 			{/* <ProtectedRoute path="/server-discovery" component={TempLogout} /> */}
 			<AuthRoute exact path="/" component={Splash} />
 			<AuthRoute path="/login" component={LoginForm} />
