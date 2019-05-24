@@ -46,11 +46,19 @@ class ServerForm extends React.Component {
 	}
 
 	render() {
+		let errorsList;
+		if (this.props.errors.length) {
+			errorsList = this.props.errors.map((error, idx) => {
+				return <li key={idx}>{error}</li>;
+			});
+		}
+
 		const preview = this.state.imageUrl ? (
 			<img src={this.state.imageUrl} alt="server_icon_image_preview" />
 		) : (
 			<img src={window.defaultIcon} alt="default_server_icon_image_preview" />
 		);
+
 		return (
 			<div className="server-creation-modal-screen">
 				<form onSubmit={this.handleSubmit} className="server-creation-modal-form">
@@ -67,8 +75,12 @@ class ServerForm extends React.Component {
 						{preview}
 						<input type="file" onChange={this.handleFile} />
 					</div>
+					<ul className="server-errors-list">{errorsList}</ul>
+					<input type="submit" value="Create" />
 				</form>
 			</div>
 		);
 	}
 }
+
+export default ServerForm;

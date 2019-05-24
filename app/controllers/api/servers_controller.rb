@@ -16,12 +16,11 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
-    if @server.save
-      unless @server.icon_image.attached? {
-        @server.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png'
-      }
+    if @server.save {
+      @server.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png') unless @server.icon_image.attached?
       @server.memberships.create({user_id: current_user.id})
       render :show
+    }
     else
       render json: @server.errors.full_messages, status: :unprocessable_entity
     end

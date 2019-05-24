@@ -29,7 +29,7 @@ class ServerNav extends React.Component {
 					<ul className="server-nav-list">
 						{serverLis}
 						<li className="server-nav-li">
-							<Link to="/server-discovery" className="server-nav-create">
+							<Link to={`/servers/${currentServerId}/create`} className="server-nav-create">
 								{/*PLACEHOLDER FOR MODAL BUTTON*/}
 								server creation modal
 							</Link>
