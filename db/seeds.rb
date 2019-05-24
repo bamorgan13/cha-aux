@@ -35,13 +35,13 @@ User.all.each do |user|
   user.owned_servers.first.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png')
 end
 
-aa = Server.create({name: 'App Academy', owner_id: 1})
+aa = Server.create({name: 'App Academy', owner_id: User.find_by(username: 'Bryce').id})
 aa.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/aa_icon.png'), filename:'aa_icon.png')
-mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: 4})
+mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: User.find_by(username: 'Chaos').id})
 mtga.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/mtga_icon.png'), filename:'mtga_icon.png')
-everyday = Server.create({name: 'Everyday Room', owner_id: 3})
+everyday = Server.create({name: 'Everyday Room', owner_id: User.find_by(username: 'Zegyr').id})
 everyday.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/everyday_icon.jpg'), filename:'everyday_icon.jpg')
-got = Server.create({name: 'Game of Thrones', owner_id: 3})
+got = Server.create({name: 'Game of Thrones', owner_id: User.find_by(username: 'Zegyr').id})
 got.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/got_icon.jpg'), filename:'got_icon.jpg')
 
 (1..8).each { |user_id| aa.memberships.create({user_id: user_id})}
