@@ -18,8 +18,6 @@ class ServerNav extends React.Component {
 		const serverLis = Object.keys(this.props.servers).map(serverId => {
 			const server = this.props.servers[serverId];
 			const activeServer = currentServerId === serverId ? 'active' : '';
-			// console.log(activeServer);
-			// debugger;
 			return <ServerNavItem key={serverId} server={server} activeServer={activeServer} />;
 		});
 		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);

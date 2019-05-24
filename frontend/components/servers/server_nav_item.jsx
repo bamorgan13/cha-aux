@@ -5,7 +5,6 @@ const ServerNavItem = ({ server, activeServer }) => {
 	const imageUrl = server.icon_image;
 	const serverName = server.name;
 	const serverId = server.id;
-	// debugger;
 	return (
 		<li className="server-nav-li">
 			<NavLink className="server-nav-li-link" to={`/servers/${serverId}`}>

@@ -37,7 +37,7 @@ class ServerForm extends React.Component {
 		const formData = new FormData();
 		formData.append('server[name]', this.state.name);
 		if (this.state.imageFile) {
-			formData.append('server[image_icon]', this.state.imageFile);
+			formData.append('server[icon_image]', this.state.imageFile);
 		}
 		// else {
 		// 	formData.append('server[image_icon', window.defaultIcon);
@@ -54,30 +54,41 @@ class ServerForm extends React.Component {
 		}
 
 		const preview = this.state.imageUrl ? (
-			<img src={this.state.imageUrl} alt="server_icon_image_preview" />
+			<img className="server-icon-preview" src={this.state.imageUrl} alt="server_icon_image_preview" />
 		) : (
-			<img src={window.defaultIcon} alt="default_server_icon_image_preview" />
+			<img className="server-icon-preview" src={window.defaultIcon} alt="default_server_icon_image_preview" />
 		);
 
 		return (
 			<div className="server-creation-modal-screen">
-				<form onSubmit={this.handleSubmit} className="server-creation-modal-form">
-					<h3 className="server-creation-form-header">Create your server</h3>
-					<h5 className="server-creation-form-subheader">
-						By creating a server, you will have access to free voice and text chat to use amongst your
-						friends.
-					</h5>
-					<div className="server-creation-form-input-name">
-						<label>Server Name</label>
-						<input type="text" value={this.state.name} onChange={this.handleInput} />
-					</div>
-					<div>
-						{preview}
-						<input type="file" onChange={this.handleFile} />
-					</div>
-					<ul className="server-errors-list">{errorsList}</ul>
-					<input type="submit" value="Create" />
-				</form>
+				<div className="server-creation-modal-form-container">
+					<form onSubmit={this.handleSubmit} className="server-creation-modal-form">
+						<div className="server-creation-form-header-container">
+							<h3 className="server-creation-form-header">Create your server</h3>
+							<h5 className="server-creation-form-subheader">
+								By creating a server, you will have access to free voice and text chat to use amongst
+								your friends.
+							</h5>
+						</div>
+						<div className="server-creation-form-content-input">
+							<div className="server-creation-form-input-name">
+								<label>Server Name</label>
+								<input
+									type="text"
+									value={this.state.name}
+									onChange={this.handleInput}
+									placeholder="Enter a server name"
+								/>
+							</div>
+							<div className="server-creation-form-input-file">
+								{preview}
+								<input type="file" onChange={this.handleFile} />
+							</div>
+						</div>
+						<ul className="server-errors-list">{errorsList}</ul>
+						<input className="server-creation-form-input-submit" type="submit" value="Create" />
+					</form>
+				</div>
 			</div>
 		);
 	}

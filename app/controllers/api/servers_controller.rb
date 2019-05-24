@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Api::ServersController < ApplicationController
   def index
     if params[:joined]
@@ -44,6 +46,6 @@ class Api::ServersController < ApplicationController
   private
 
   def server_params
-    params.require(:server).permit(:name, :owner_id, :private, :image_icon)
+    params.require(:server).permit(:name, :owner_id, :private, :icon_image)
   end
 end
