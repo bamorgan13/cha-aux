@@ -23,10 +23,9 @@ class ServerNav extends React.Component {
 
 	render() {
 		const currentServerId = this.props.location.pathname.split('/')[2];
-		const serverLis = Object.keys(this.props.servers).map(serverId => {
-			const server = this.props.servers[serverId];
-			const activeServer = currentServerId === serverId ? 'active' : '';
-			return <ServerNavItem key={serverId} server={server} activeServer={activeServer} />;
+		const serverLis = this.props.servers.map(server => {
+			const activeServer = currentServerId === server.id ? 'active' : '';
+			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
 		});
 		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
 		return (
