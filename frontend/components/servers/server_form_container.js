@@ -2,17 +2,20 @@ import { connect } from 'react-redux';
 import ServerForm from './server_form';
 import { createServer } from '../../actions/server_actions';
 import { clearErrors } from '../../actions/session_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 const msp = state => {
 	return {
-		errors: state.errors.server
+		errors: state.errors.server,
+		modalOpen: state.ui.modal.open
 	};
 };
 
 const mdp = dispatch => {
 	return {
 		createServer: server => dispatch(createServer(server)),
-		clearErrors: () => dispatch(clearErrors())
+		clearErrors: () => dispatch(clearErrors()),
+		closeModal: () => dispatch(closeModal())
 	};
 };
 

@@ -1,5 +1,13 @@
 @import 'variables';
 
+.server-creation-modal {
+	display: none;
+}
+
+.server-creation-modal.open {
+	display: block;
+}
+
 .server-creation-modal-screen {
 	position: fixed;
 	top: 0;

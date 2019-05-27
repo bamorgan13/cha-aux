@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 class ServerForm extends React.Component {
 	constructor(props) {
@@ -12,10 +11,27 @@ class ServerForm extends React.Component {
 		this.handleInput = this.handleInput.bind(this);
 		this.handleFile = this.handleFile.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleScreenClick = this.handleScreenClick.bind(this);
+		this.clearInput = this.clearInput.bind(this);
 	}
 
 	componentWillUnmount() {
 		this.props.clearErrors();
+	}
+
+	clearInput() {
+		this.setState({
+			name: '',
+			imageFile: null,
+			imageUrl: null
+		});
+	}
+
+	handleScreenClick(e) {
+		if (e.target.className === 'server-creation-modal-screen') {
+			this.props.closeModal();
+			this.clearInput();
+		}
 	}
 
 	handleInput(e) {
@@ -40,16 +56,17 @@ class ServerForm extends React.Component {
 		if (this.state.imageFile) {
 			formData.append('server[icon_image]', this.state.imageFile);
 		}
-		let newServerId;
-		this.props.createServer(formData).then(newServer => {
-			debugger;
-			newServerId = newServer.server.id;
-		});
-		this.props.history.push(`/server-discovery`);
-		// debugger;
+		this.props.createServer(formData);
+		this.props.closeModal();
+		this.clearInput();
 	}
 
 	render() {
+		let modalClassName = 'server-creation-modal';
+		if (this.props.modalOpen) {
+			modalClassName = modalClassName.concat(' open');
+		}
+
 		let errorsList;
 		if (this.props.errors.length) {
 			errorsList = this.props.errors.map((error, idx) => {
@@ -64,34 +81,36 @@ class ServerForm extends React.Component {
 		);
 
 		return (
-			<div className="server-creation-modal-screen">
-				<div className="server-creation-modal-form-container">
-					<form onSubmit={this.handleSubmit} className="server-creation-modal-form">
-						<div className="server-creation-form-header-container">
-							<h3 className="server-creation-form-header">Create your server</h3>
-							<h5 className="server-creation-form-subheader">
-								By creating a server, you will have access to free voice and text chat to use amongst
-								your friends.
-							</h5>
-						</div>
-						<div className="server-creation-form-content-input">
-							<div className="server-creation-form-input-name">
-								<label>Server Name</label>
-								<input
-									type="text"
-									value={this.state.name}
-									onChange={this.handleInput}
-									placeholder="Enter a server name"
-								/>
+			<div id="server-creation-modal" className={modalClassName}>
+				<div className="server-creation-modal-screen" onClick={this.handleScreenClick}>
+					<div className="server-creation-modal-form-container">
+						<form onSubmit={this.handleSubmit} className="server-creation-modal-form">
+							<div className="server-creation-form-header-container">
+								<h3 className="server-creation-form-header">Create your server</h3>
+								<h5 className="server-creation-form-subheader">
+									By creating a server, you will have access to free voice and text chat to use
+									amongst your friends.
+								</h5>
 							</div>
-							<div className="server-creation-form-input-file">
-								{preview}
-								<input type="file" onChange={this.handleFile} />
+							<div className="server-creation-form-content-input">
+								<div className="server-creation-form-input-name">
+									<label>Server Name</label>
+									<input
+										type="text"
+										value={this.state.name}
+										onChange={this.handleInput}
+										placeholder="Enter a server name"
+									/>
+								</div>
+								<div className="server-creation-form-input-file">
+									{preview}
+									<input type="file" onChange={this.handleFile} />
+								</div>
 							</div>
-						</div>
-						<ul className="server-errors-list">{errorsList}</ul>
-						<input className="server-creation-form-input-submit" type="submit" value="Create" />
-					</form>
+							<ul className="server-errors-list">{errorsList}</ul>
+							<input className="server-creation-form-input-submit" type="submit" value="Create" />
+						</form>
+					</div>
 				</div>
 			</div>
 		);

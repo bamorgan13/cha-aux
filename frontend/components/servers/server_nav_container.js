@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ServerNav from './server_nav';
 import { getServers, getServer } from '../../actions/server_actions';
+import { openModal } from '../../actions/modal_actions';
 
 const msp = state => {
 	return {
@@ -13,7 +14,8 @@ const mdp = dispatch => {
 	return {
 		getJoinedServers: () => dispatch(getServers({ joined: true })),
 		getAllServers: () => dispatch(getServers()),
-		getServer: id => dispatch(getServer(id))
+		getServer: id => dispatch(getServer(id)),
+		openModal: () => dispatch(openModal())
 	};
 };
 
