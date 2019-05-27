@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class ServerForm extends React.Component {
 	constructor(props) {
@@ -39,10 +40,13 @@ class ServerForm extends React.Component {
 		if (this.state.imageFile) {
 			formData.append('server[icon_image]', this.state.imageFile);
 		}
-		// else {
-		// 	formData.append('server[image_icon', window.defaultIcon);
-		// }
-		this.props.createServer(formData);
+		let newServerId;
+		this.props.createServer(formData).then(newServer => {
+			debugger;
+			newServerId = newServer.server.id;
+		});
+		this.props.history.push(`/server-discovery`);
+		// debugger;
 	}
 
 	render() {

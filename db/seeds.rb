@@ -8,9 +8,9 @@
 
 require 'open-uri'
 require 'faker'
+require 'database_cleaner'
 
-User.destroy_all
-Server.destroy_all
+DatabaseCleaner.clean_with(:truncation)
 
 bryce = User.create({username: 'Bryce', email: 'bryce@gmail.com', password: 'notpassword'})
 bryce.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/bryce_headshot.jpg'), filename:'bryce_icon.jpg')
