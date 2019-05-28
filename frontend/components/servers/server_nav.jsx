@@ -45,7 +45,6 @@ class ServerNav extends React.Component {
 							<button className="server-nav-create" onClick={this.handleCreationClick}>
 								<div className="server-nav-create-icon" />
 							</button>
-							<ServerForm />
 							<div className="server-name-label-container">
 								<div className="server-nav-arrow-left" />
 								<span className="server-nav-li-link-name">Add a Server</span>
@@ -70,6 +69,7 @@ class ServerNav extends React.Component {
 					<TempLogout />
 				</nav>
 				{serverIndex}
+				<ServerForm />
 			</div>
 		);
 	}

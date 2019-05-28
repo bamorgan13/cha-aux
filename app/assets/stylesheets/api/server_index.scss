@@ -1,0 +1,47 @@
+@import 'variables';
+
+.server-index-container {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+	padding: 0 44px;
+	.server-index-background {
+		// display: none;
+		background: $dark-grey;
+		background-image: image_url('server_index_background.jpg');
+		box-shadow: 0 0 20px 20px $dark-grey inset;
+		opacity: 0.5;
+		position: absolute;
+		top: 0;
+		left: 72px;
+		z-index: 1;
+		height: 200px;
+		width: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: top;
+	}
+	.server-index-header {
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 40px;
+		margin: 100px 0 24px;
+		color: $white;
+		// opacity: 1;
+	}
+	.server-index-group-header {
+		font-weight: bold;
+		margin: 48px 0 16px;
+		line-height: 1.2;
+		color: $white;
+		align-self: flex-start;
+	}
+
+	.server-index-list {
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+	}
+}
