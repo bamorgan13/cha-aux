@@ -25,7 +25,12 @@ class ServerNav extends React.Component {
 	render() {
 		const currentServerId = parseInt(this.props.location.pathname.split('/')[2]);
 		const discoveryPage = this.props.location.pathname.split('/')[1] === 'server-discovery';
-		const serverIndex = discoveryPage ? <ServerIndex /> : null;
+		let serverIndex;
+		let discoveryNavIndicatorClass = 'server-nav-selector-indicator';
+		if (discoveryPage) {
+			serverIndex = <ServerIndex />;
+			discoveryNavIndicatorClass = discoveryNavIndicatorClass.concat(' active');
+		}
 		const serverLis = this.props.servers.map(server => {
 			const activeServer = currentServerId === server.id ? 'active' : '';
 			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
@@ -58,7 +63,7 @@ class ServerNav extends React.Component {
 								<span className="server-nav-li-link-name">Server Discovery</span>
 							</div>
 							<div className="server-nav-selector-container">
-								<div className={`server-nav-selector-indicator`} />
+								<div className={discoveryNavIndicatorClass} />
 							</div>
 						</li>
 					</ul>
