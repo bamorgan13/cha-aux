@@ -5,12 +5,12 @@ import { openModal } from '../../actions/modal_actions';
 
 const msp = state => {
 	const joinedServerIds = state.entities.users[state.session.id].joinedServerIds;
-
 	let joinedServers = [];
-	if (Object.entries(state.entities.servers).length !== 0) {
-		joinedServers = joinedServerIds.map(id => state.entities.servers[id]);
-	}
-
+	joinedServerIds.forEach(id => {
+		if (Object.keys(state.entities.servers).includes(id.toString())) {
+			joinedServers.push(state.entities.servers[id]);
+		}
+	});
 	return {
 		servers: joinedServers
 	};

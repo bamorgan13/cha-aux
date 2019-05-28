@@ -73,14 +73,16 @@
 
 					.server-nav-create-icon {
 						background-image: image_url('plus_icon_green.png');
-						&:hover {
+						&:hover,
+						&.active {
 							background-image: image_url('plus_icon_white.png');
 						}
 					}
 					.server-nav-discovery-icon {
 						background-image: image_url('search_icon_green.png');
 						margin-top: 8px;
-						&:hover {
+						&:hover,
+						&.active {
 							background-image: image_url('search_icon_white.png');
 						}
 					}
@@ -95,7 +97,8 @@
 						background-color: inherit;
 						transition: inherit;
 
-						&:hover {
+						&:hover,
+						&.active {
 							border-radius: 15px;
 							background-color: $green;
 						}

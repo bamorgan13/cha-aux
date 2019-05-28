@@ -21,9 +21,10 @@ const ServerIndexItem = ({ server }) => {
 				<h5 className="server-index-item-name">{server.name}</h5>
 				<p className="server-index-item-description" />
 			</div>
-			<Link className="server-index-item-button" to={`servers/${server.id}`}>
+			<div className="server-index-item-button">View</div>
+			{/* <Link className="server-index-item-button" to={`servers/${server.id}`}>
 				View
-			</Link>
+			</Link> */}
 			{/* </div> */}
 		</Link>
 	);

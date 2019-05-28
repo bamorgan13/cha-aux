@@ -27,15 +27,20 @@ class ServerNav extends React.Component {
 		const discoveryPage = this.props.location.pathname.split('/')[1] === 'server-discovery';
 		let serverIndex;
 		let discoveryNavIndicatorClass = 'server-nav-selector-indicator';
+		let discoveryNavIconClass = 'server-nav-discovery-icon';
 		if (discoveryPage) {
 			serverIndex = <ServerIndex />;
 			discoveryNavIndicatorClass = discoveryNavIndicatorClass.concat(' active');
+			discoveryNavIconClass = discoveryNavIconClass.concat(' active');
 		}
-		const serverLis = this.props.servers.map(server => {
-			const activeServer = currentServerId === server.id ? 'active' : '';
-			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
-		});
-		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
+		let serverLis;
+		if (this.props.servers.length > 0) {
+			serverLis = this.props.servers.map(server => {
+				const activeServer = currentServerId === server.id ? 'active' : '';
+				return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
+			});
+			serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
+		}
 		return (
 			<div className="server-container">
 				<nav className="server-nav">
@@ -55,7 +60,7 @@ class ServerNav extends React.Component {
 						</li>
 						<li className="server-nav-li">
 							<Link to="/server-discovery" className="server-nav-discovery">
-								<div className="server-nav-discovery-icon" />
+								<div className={discoveryNavIconClass} />
 							</Link>
 							<div className="server-name-label-container">
 								<div className="server-nav-arrow-left" />
