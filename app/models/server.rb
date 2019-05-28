@@ -1,6 +1,5 @@
 class Server < ApplicationRecord
-  validates :name, :private, null: false
-  # validate :ensure_icon
+  validates :name, presence: true
 
   belongs_to :owner,
     foreign_key: :owner_id,
@@ -14,10 +13,4 @@ class Server < ApplicationRecord
     source: :user
 
   has_one_attached :icon_image
-
-  # def ensure_icon
-  #   unless self.icon_image.attached?
-  #     errors[:icon_image] << "must be attached"
-  #   end
-  # end
 end

@@ -35,13 +35,13 @@ User.all.each do |user|
   user.owned_servers.first.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png')
 end
 
-aa = Server.create({name: 'App Academy', owner_id: bryce.id})
+aa = Server.create({name: 'App Academy', owner_id: bryce.id, private: false})
 aa.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/aa_icon.png'), filename:'aa_icon.png')
-mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: chaos.id})
+mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: chaos.id, private: false})
 mtga.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/mtga_icon.png'), filename:'mtga_icon.png')
-everyday = Server.create({name: 'Everyday Room', owner_id: zegyr.id})
+everyday = Server.create({name: 'Everyday Room', owner_id: zegyr.id, private: false})
 everyday.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/everyday_icon.jpg'), filename:'everyday_icon.jpg')
-got = Server.create({name: 'Game of Thrones', owner_id: zegyr.id})
+got = Server.create({name: 'Game of Thrones', owner_id: zegyr.id, private: false})
 got.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/got_icon.jpg'), filename:'got_icon.jpg')
 
 User.all.each do |user|

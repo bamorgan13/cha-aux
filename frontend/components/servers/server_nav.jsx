@@ -4,6 +4,7 @@ import ServerNavItem from './server_nav_item';
 import ServerForm from './server_form_container';
 
 import TempLogout from '../temp_logout';
+import ServerIndex from './server_index_container';
 
 class ServerNav extends React.Component {
 	constructor(props) {
@@ -22,7 +23,9 @@ class ServerNav extends React.Component {
 	}
 
 	render() {
-		const currentServerId = this.props.location.pathname.split('/')[2];
+		const currentServerId = parseInt(this.props.location.pathname.split('/')[2]);
+		const discoveryPage = this.props.location.pathname.split('/')[1] === 'server-discovery';
+		const serverIndex = discoveryPage ? <ServerIndex /> : null;
 		const serverLis = this.props.servers.map(server => {
 			const activeServer = currentServerId === server.id ? 'active' : '';
 			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
@@ -59,8 +62,9 @@ class ServerNav extends React.Component {
 							</div>
 						</li>
 					</ul>
+					<TempLogout />
 				</nav>
-				<TempLogout />
+				{serverIndex}
 			</div>
 		);
 	}
