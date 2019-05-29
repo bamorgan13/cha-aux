@@ -57,8 +57,8 @@ export const createServer = server => dispatch => {
 	);
 };
 
-export const updateServer = server => dispatch => {
-	return APIUtil.updateServer(server).then(server =>
+export const updateServer = (server, newMemberId) => dispatch => {
+	return APIUtil.updateServer(server, newMemberId).then(server =>
 		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors(errors)))
 	);
 };

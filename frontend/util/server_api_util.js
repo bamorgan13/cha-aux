@@ -20,11 +20,11 @@ export const getServer = id =>
 		url: `/api/servers/${id}`
 	});
 
-export const updateServer = server =>
+export const updateServer = (server, newMemberId) =>
 	$.ajax({
 		method: 'PATCH',
 		url: `/api/servers/${server.id}`,
-		data: { server }
+		data: { server, newMemberId }
 	});
 
 export const deleteServer = id =>

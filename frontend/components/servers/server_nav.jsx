@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ServerNavItem from './server_nav_item';
 import ServerForm from './server_form_container';
+import { scalarArraysAreEqual } from '../../util/helper_functions';
 
 import TempLogout from '../temp_logout';
 import ServerIndex from './server_index_container';
@@ -11,10 +12,22 @@ class ServerNav extends React.Component {
 		super(props);
 
 		this.handleCreationClick = this.handleCreationClick.bind(this);
+		this.state = {
+			currentServerId: null
+		};
 	}
 
 	componentDidMount() {
 		this.props.getJoinedServers();
+	}
+
+	componentDidUpdate(prevProps) {
+		const currentServerId = parseInt(this.props.location.pathname.split('/')[2]);
+		if (currentServerId && this.state.currentServerId !== currentServerId) this.setState({ currentServerId });
+
+		if (!scalarArraysAreEqual(this.props.fetchedServerIds, prevProps.fetchedServerIds)) {
+			this.props.getServer(currentServerId);
+		}
 	}
 
 	handleCreationClick(e) {
@@ -23,7 +36,6 @@ class ServerNav extends React.Component {
 	}
 
 	render() {
-		const currentServerId = parseInt(this.props.location.pathname.split('/')[2]);
 		const discoveryPage = this.props.location.pathname.split('/')[1] === 'server-discovery';
 		let serverIndex;
 		let discoveryNavIndicatorClass = 'server-nav-selector-indicator';
@@ -34,29 +46,28 @@ class ServerNav extends React.Component {
 			discoveryNavIconClass = discoveryNavIconClass.concat(' active');
 		}
 		let serverLis;
-		serverLis = this.props.servers.map(server => {
+		const currentServerId = this.state.currentServerId;
+		serverLis = Object.values(this.props.joinedServers).map(server => {
 			const activeServer = currentServerId === server.id ? 'active' : '';
 			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
 		});
 		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
-		// if (!discoveryPage && !this.props.joinedServerIds.includes(currentServerId)) {
-		// 	debugger;
-		// 	if (!this.props.fetchedServerIds.includes(currentServerId.toString())) {
-		// 		debugger;
-		// 		this.props.getServer(currentServerId);
-		// 	} else {
-		// 		debugger;
-		// 		serverLis.splice(
-		// 			1,
-		// 			0,
-		// 			<ServerNavItem
-		// 				key={currentServerId}
-		// 				server={this.props.servers[currentServerId]}
-		// 				activeServer="active"
-		// 			/>
-		// 		);
-		// 	}
-		// }
+		if (
+			this.state.currentServerId &&
+			!discoveryPage &&
+			!this.props.joinedServerIds.includes(this.state.currentServerId) &&
+			this.props.fetchedServers[this.state.currentServerId]
+		) {
+			serverLis.splice(
+				1,
+				0,
+				<ServerNavItem
+					key={this.state.currentServerId}
+					server={this.props.fetchedServers[this.state.currentServerId]}
+					activeServer="active"
+				/>
+			);
+		}
 		return (
 			<div className="server-container">
 				<nav className="server-nav">
