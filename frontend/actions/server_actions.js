@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/server_api_util';
+import { closeModal } from './modal_actions';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
@@ -49,6 +50,7 @@ export const createServer = server => dispatch => {
 	return APIUtil.createServer(server).then(
 		server => {
 			dispatch(receiveServer(server));
+			dispatch(closeModal());
 			return dispatch(updateJoinedServers(server));
 		},
 		errors => {

@@ -58,7 +58,6 @@ class ServerForm extends React.Component {
 			formData.append('server[icon_image]', this.state.imageFile);
 		}
 		this.props.createServer(formData);
-		this.props.closeModal();
 		this.clearInput();
 	}
 
