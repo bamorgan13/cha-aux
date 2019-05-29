@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateServer } from '../actions/server_actions';
 
-const msp = state => {
+const msp = (state, ownProps) => {
 	return {
-		currentUserId: state.session.id
+		currentUserId: state.session.id,
+		server: ownProps.server
 	};
 };
 
@@ -14,7 +15,8 @@ const mdp = dispatch => {
 	};
 };
 
-const JoinServer = ({ currentUserId, joinServer }, { server }) => {
+const JoinServer = ({ currentUserId, joinServer, server }) => {
+	debugger;
 	return (
 		<button
 			style={{ background: 'green', height: 80, width: 80 }}

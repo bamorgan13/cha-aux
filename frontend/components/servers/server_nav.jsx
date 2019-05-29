@@ -4,6 +4,7 @@ import ServerNavItem from './server_nav_item';
 import ServerForm from './server_form_container';
 import { scalarArraysAreEqual } from '../../util/helper_functions';
 
+import TempJoinServer from '../temp_join_server';
 import TempLogout from '../temp_logout';
 import ServerIndex from './server_index_container';
 
@@ -23,10 +24,15 @@ class ServerNav extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		const currentServerId = parseInt(this.props.location.pathname.split('/')[2]);
-		if (currentServerId && this.state.currentServerId !== currentServerId) this.setState({ currentServerId });
-
-		if (!scalarArraysAreEqual(this.props.fetchedServerIds, prevProps.fetchedServerIds)) {
+		if (currentServerId && this.state.currentServerId !== currentServerId) {
+			this.setState({ currentServerId });
+		}
+		if (currentServerId && !scalarArraysAreEqual(this.props.fetchedServerIds, prevProps.fetchedServerIds)) {
 			this.props.getServer(currentServerId);
+		}
+		if (currentServerId && !scalarArraysAreEqual(this.props.joinedServerIds, prevProps.joinedServerIds)) {
+			this.props.getJoinedServers();
+			this.setState({ currentServerId });
 		}
 	}
 
@@ -52,21 +58,20 @@ class ServerNav extends React.Component {
 			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
 		});
 		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
+		let tempJoinServer;
 		if (
 			this.state.currentServerId &&
 			!discoveryPage &&
 			!this.props.joinedServerIds.includes(this.state.currentServerId) &&
 			this.props.fetchedServers[this.state.currentServerId]
 		) {
+			const activeServer = this.props.fetchedServers[this.state.currentServerId];
 			serverLis.splice(
 				1,
 				0,
-				<ServerNavItem
-					key={this.state.currentServerId}
-					server={this.props.fetchedServers[this.state.currentServerId]}
-					activeServer="active"
-				/>
+				<ServerNavItem key={this.state.currentServerId} server={activeServer} activeServer="active" />
 			);
+			tempJoinServer = <TempJoinServer server={activeServer} />;
 		}
 		return (
 			<div className="server-container">
@@ -100,6 +105,7 @@ class ServerNav extends React.Component {
 					</ul>
 					<TempLogout />
 				</nav>
+				{tempJoinServer}
 				{serverIndex}
 				<ServerForm />
 			</div>

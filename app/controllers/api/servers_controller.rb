@@ -31,10 +31,20 @@ class Api::ServersController < ApplicationController
 
   def update
     @server = Server.find(params[:id])
-    if @server.update(server_params)
+    debugger
+    if params[:newMemberId]
+      @newMemberId = params[:newMemberId]
+      debugger
+      @server.memberships.create({user_id: @newMemberId})
+      debugger
       render :show
-    else
-      render @server.errors.full_messages, status: :unprocessable_entity
+    else (
+      if @server.update(server_params)
+        render :show
+      else
+        render @server.errors.full_messages, status: :unprocessable_entity
+      end
+    )
     end
   end
 
