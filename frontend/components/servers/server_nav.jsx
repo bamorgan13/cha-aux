@@ -34,13 +34,29 @@ class ServerNav extends React.Component {
 			discoveryNavIconClass = discoveryNavIconClass.concat(' active');
 		}
 		let serverLis;
-		if (this.props.servers.length > 0) {
-			serverLis = this.props.servers.map(server => {
-				const activeServer = currentServerId === server.id ? 'active' : '';
-				return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
-			});
-			serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
-		}
+		serverLis = this.props.servers.map(server => {
+			const activeServer = currentServerId === server.id ? 'active' : '';
+			return <ServerNavItem key={server.id} server={server} activeServer={activeServer} />;
+		});
+		serverLis.splice(1, 0, <li key={0} className="server-nav-separator" />);
+		// if (!discoveryPage && !this.props.joinedServerIds.includes(currentServerId)) {
+		// 	debugger;
+		// 	if (!this.props.fetchedServerIds.includes(currentServerId.toString())) {
+		// 		debugger;
+		// 		this.props.getServer(currentServerId);
+		// 	} else {
+		// 		debugger;
+		// 		serverLis.splice(
+		// 			1,
+		// 			0,
+		// 			<ServerNavItem
+		// 				key={currentServerId}
+		// 				server={this.props.servers[currentServerId]}
+		// 				activeServer="active"
+		// 			/>
+		// 		);
+		// 	}
+		// }
 		return (
 			<div className="server-container">
 				<nav className="server-nav">

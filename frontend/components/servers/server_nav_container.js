@@ -12,7 +12,9 @@ const msp = state => {
 		}
 	});
 	return {
-		servers: joinedServers
+		joinedServerIds: joinedServerIds,
+		servers: joinedServers,
+		fetchedServerIds: Object.keys(state.entities.servers)
 	};
 };
 
