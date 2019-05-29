@@ -31,12 +31,9 @@ class Api::ServersController < ApplicationController
 
   def update
     @server = Server.find(params[:id])
-    debugger
     if params[:newMemberId]
       @newMemberId = params[:newMemberId]
-      debugger
       @server.memberships.create({user_id: @newMemberId})
-      debugger
       render :show
     else (
       if @server.update(server_params)

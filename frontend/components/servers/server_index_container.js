@@ -4,7 +4,8 @@ import { getServers } from '../../actions/server_actions';
 
 const msp = state => {
 	return {
-		servers: Object.values(state.entities.servers)
+		servers: Object.values(state.entities.servers),
+		serverIds: Object.keys(state.entities.servers)
 	};
 };
 

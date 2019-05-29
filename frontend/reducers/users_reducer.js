@@ -4,12 +4,10 @@ import { UPDATE_JOINED_SERVERS } from '../actions/server_actions';
 
 const usersReducer = (state = {}, action) => {
 	Object.freeze(state);
-	debugger;
 	switch (action.type) {
 		case RECEIVE_CURRENT_USER:
 			return merge({}, state, { [action.currentUser.id]: action.currentUser });
 		case UPDATE_JOINED_SERVERS:
-			debugger;
 			const currentUserId = action.server.newMemberId || action.server.owner_id;
 			const currentUser = state[currentUserId];
 			const newJoinedServerIds = currentUser.joinedServerIds.concat(action.server.id);

@@ -8,9 +8,12 @@
 
 require 'open-uri'
 require 'faker'
-require 'database_cleaner'
+# require 'database_cleaner'
 
-DatabaseCleaner.clean_with(:truncation)
+# DatabaseCleaner.clean_with(:truncation)
+
+User.destroy_all
+Server.destroy_all
 
 bryce = User.create({username: 'Bryce', email: 'bryce@gmail.com', password: 'notpassword'})
 bryce.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/bryce_headshot.jpg'), filename:'bryce_icon.jpg')
@@ -48,5 +51,5 @@ User.all.each do |user|
   aa.memberships.create({user_id: user.id})
   mtga.memberships.create({user_id: user.id})
 end
-[bryce, gaben, zegyr, chaos].each { |user| everyday.memberships.create({user_id: user.id})}
-[bryce, zegyr, durango, jason].each { |user| got.memberships.create({user_id: user.id})}
+[gaben, zegyr, chaos].each { |user| everyday.memberships.create({user_id: user.id})}
+[zegyr, durango, jason].each { |user| got.memberships.create({user_id: user.id})}

@@ -16,7 +16,6 @@ const mdp = dispatch => {
 };
 
 const JoinServer = ({ currentUserId, joinServer, server }) => {
-	debugger;
 	return (
 		<button
 			style={{ background: 'green', height: 80, width: 80 }}

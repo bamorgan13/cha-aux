@@ -1,5 +1,6 @@
 import React from 'react';
 import ServerIndexItem from './server_index_item';
+import { scalarArraysAreEqual } from '../../util/helper_functions';
 
 class ServerIndex extends React.Component {
 	constructor(props) {
@@ -8,6 +9,12 @@ class ServerIndex extends React.Component {
 
 	componentDidMount() {
 		this.props.getAllServers();
+	}
+
+	componentDidUpdate(prevProps) {
+		if (!scalarArraysAreEqual(this.props.serverIds, prevProps.serverIds)) {
+			this.props.getAllServers();
+		}
 	}
 
 	render() {
