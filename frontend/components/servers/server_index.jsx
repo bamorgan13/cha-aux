@@ -29,10 +29,10 @@ class ServerIndex extends React.Component {
 			: null;
 		return (
 			<div className="server-index-container">
-				<h1 className="server-index-header">
+				<div className="server-index-header">
+					<h1 className="server-index-header-text">Find new communities on Cha-aux</h1>
 					<div className="server-index-background" />
-					Find new communities on Cha-aux
-				</h1>
+				</div>
 				<h5 className="server-index-group-header">Popular servers and communities</h5>
 				<ul className="server-index-list">{serverLis}</ul>
 			</div>

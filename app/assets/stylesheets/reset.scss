@@ -39,6 +39,7 @@ html,
 .app {
 	height: 100%;
 	background-color: $almost-black;
+	z-index: -1;
 }
 
 ul {
