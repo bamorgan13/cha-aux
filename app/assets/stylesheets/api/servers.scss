@@ -12,23 +12,18 @@
 
 	.server-nav {
 		width: 72px;
+		min-width: 72px;
 		height: 100%;
 		background-color: $almost-black;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		z-index: 1;
-		// overflow-x: visible;
-		// overflow-y: scroll;
-		// &::-webkit-scrollbar {
-		// 	display: none;
-		// }
 
 		.server-nav-list {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			// overflow-x: visible;
 			.server-nav-separator {
 				width: 32px;
 				height: 2px;
@@ -39,7 +34,6 @@
 			.server-nav-li {
 				height: 56px;
 				width: 48px;
-				// overflow: visible;
 
 				.server-nav-selector-indicator {
 					width: 8px;
@@ -50,7 +44,6 @@
 					left: -16px;
 					top: -66px;
 					opacity: 0;
-					// display: none;
 					transition: 0.3s;
 					transform: scale(0);
 				}
@@ -70,7 +63,6 @@
 					border-radius: 50%;
 					background-color: $dark-grey;
 					transition: 0.3s;
-					// overflow: visible;
 
 					.server-nav-create-icon {
 						background-image: image_url('plus_icon_green.png');
@@ -126,8 +118,6 @@
 					.server-nav-selector-indicator,
 					.server-name-label-container {
 						opacity: 1;
-						// display: flex;
-						// z-index: 3;
 					}
 					.server-nav-selector-indicator {
 						transform: scale(1);
@@ -139,7 +129,6 @@
 					display: flex;
 					align-items: center;
 					z-index: 1;
-					// overflow: visible;
 				}
 				.server-nav-arrow-left {
 					width: 0;
@@ -151,14 +140,11 @@
 					left: 54px;
 					top: -40px;
 					opacity: 0;
-					// display: none;
 				}
 				.server-nav-li-link-name {
-					// overflow: visible;
 					position: relative;
 					white-space: nowrap;
 					left: 54px;
-					// left: 0px;
 					top: -40px;
 					background-color: black;
 					color: $light-grey;
@@ -166,8 +152,6 @@
 					border-radius: 5px;
 					opacity: 0;
 					pointer-events: none;
-					// display: none;
-					// z-index: 1;
 				}
 
 				.active {
@@ -180,7 +164,6 @@
 					border-radius: 4px;
 					height: 40px;
 					opacity: 1;
-					// display: block;
 					transform: scale(1);
 					top: -76px;
 				}
