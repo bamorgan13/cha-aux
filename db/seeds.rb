@@ -12,8 +12,9 @@ require 'faker'
 
 # DatabaseCleaner.clean_with(:truncation)
 
-User.destroy_all
+Membership.destroy_all
 Server.destroy_all
+User.destroy_all
 
 bryce = User.create({username: 'Bryce', email: 'bryce@gmail.com', password: 'notpassword'})
 bryce.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/bryce_headshot.jpg'), filename:'bryce_icon.jpg')
@@ -40,16 +41,45 @@ end
 
 aa = Server.create({name: 'App Academy', owner_id: bryce.id, private: false})
 aa.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/aa_icon.png'), filename:'aa_icon.png')
-mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: chaos.id, private: false})
-mtga.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/mtga_icon.png'), filename:'mtga_icon.png')
-everyday = Server.create({name: 'Everyday Room', owner_id: zegyr.id, private: false})
+albion_online = Server.create({name: 'Albion Online', owner_id: gaben.id, private: false})
+albion_online.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/albion_online_icon.png'), filename:'albion_online_icon.png')
+assassins_creed = Server.create({name: "Assassin's Creed", owner_id: gaben.id, private: false})
+assassins_creed.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/assassins_creed_icon.png'), filename:'assassins_creed_icon.png')
+darkest_dungeon = Server.create({name: "Darkest Dungeon", owner_id: gaben.id, private: false})
+darkest_dungeon.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/darkest_dungeon_icon.png'), filename:'darkest_dungeon_icon.png')
+everyday = Server.create({name: 'Everyday Room', owner_id: zegyr.id, private: true})
 everyday.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/everyday_icon.jpg'), filename:'everyday_icon.jpg')
+for_honor = Server.create({name: "For Honor", owner_id: gaben.id, private: false})
+for_honor.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/for_honor_icon.png'), filename:'for_honor_icon.png')
+fortnite = Server.create({name: "Fortnite", owner_id: gaben.id, private: false})
+fortnite.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/fortnite_icon.png'), filename:'fortnite_icon.png')
 got = Server.create({name: 'Game of Thrones', owner_id: zegyr.id, private: false})
 got.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/got_icon.jpg'), filename:'got_icon.jpg')
+hearthstone = Server.create({name: "Hearthstone", owner_id: gaben.id, private: false})
+hearthstone.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/hearthstone_icon.png'), filename:'hearthstone_icon.png')
+maplestory_2 = Server.create({name: "MapleStory 2", owner_id: gaben.id, private: false})
+maplestory_2.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/maplestory_2_icon.png'), filename:'maplestory_2_icon.png')
+mortal_kombat = Server.create({name: "Mortal Kombat", owner_id: gaben.id, private: false})
+mortal_kombat.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/mortal_kombat_icon.png'), filename:'mortal_kombat_icon.png')
+mtga = Server.create({name: 'Magic the Gathering: Arena', owner_id: chaos.id, private: false})
+mtga.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/mtga_icon.png'), filename:'mtga_icon.png')
+overwatch = Server.create({name: "Overwatch", owner_id: gaben.id, private: false})
+overwatch.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/overwatch_icon.png'), filename:'overwatch_icon.png')
+poe = Server.create({name: "Path of Exile", owner_id: gaben.id, private: false})
+poe.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/poe_icon.png'), filename:'poe_icon.png')
+runescape = Server.create({name: "Runescape", owner_id: gaben.id, private: false})
+runescape.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/runescape_icon.png'), filename:'runescape_icon.png')
+rust = Server.create({name: "Rust", owner_id: gaben.id, private: false})
+rust.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/rust_icon.png'), filename:'rust_icon.png')
+wow = Server.create({name: "World of Warcraft", owner_id: gaben.id, private: false})
+wow.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/wow_icon.png'), filename:'wow_icon.png')
 
-User.all.each do |user|
+# Server.all.each {|server| server.memberships.create({user_id: gaben.id})}
+
+[bryce, zegyr, chaos, durango, jason, justin, emmett].each do |user|
   aa.memberships.create({user_id: user.id})
   mtga.memberships.create({user_id: user.id})
 end
-[gaben, zegyr, chaos].each { |user| everyday.memberships.create({user_id: user.id})}
-[zegyr, durango, jason].each { |user| got.memberships.create({user_id: user.id})}
+
+[bryce, zegyr, chaos].each { |user| everyday.memberships.create({user_id: user.id})}
+[bryce, zegyr, durango, jason].each { |user| got.memberships.create({user_id: user.id})}
