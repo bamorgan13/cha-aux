@@ -12,9 +12,6 @@ const App = () => {
 		<div className="app">
 			<ProtectedRoute path="/servers" component={ServerNav} />
 			<ProtectedRoute path="/server-discovery" component={ServerNav} />
-			{/* <ProtectedRoute path="/server-discovery" component={ServerIndex} /> */}
-			{/* <ProtectedRoute path="/server" component={ServerNav} /> */}
-			{/* <ProtectedRoute path="/servers/:serverId/create" component={ServerForm} /> */}
 			<AuthRoute exact path="/" component={Splash} />
 			<AuthRoute path="/login" component={LoginForm} />
 			<AuthRoute path="/signup" component={SignupForm} />

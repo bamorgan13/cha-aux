@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const ServerIndexItem = ({ server }) => {
 	return (
 		<Link className="server-index-item-container" to={`servers/${server.id}`}>
-			{/* <div className="server-index-item-container"> */}
 			<div className="server-index-item-image-box">
 				<img
 					className="server-index-item-splash"
@@ -22,10 +21,6 @@ const ServerIndexItem = ({ server }) => {
 				<p className="server-index-item-description" />
 			</div>
 			<div className="server-index-item-button">View</div>
-			{/* <Link className="server-index-item-button" to={`servers/${server.id}`}>
-				View
-			</Link> */}
-			{/* </div> */}
 		</Link>
 	);
 };

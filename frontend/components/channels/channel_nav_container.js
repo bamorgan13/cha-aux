@@ -24,6 +24,7 @@ const msp = (state, ownProps) => {
 		joinedChannelIds,
 		joinedChannels,
 		currentServerId,
+		currentServerName: state.entities.servers[currentServerId],
 		fetchedChannels: state.entities.channels,
 		fetchedChannelIds: Object.keys(state.entities.channels)
 	};

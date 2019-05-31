@@ -15,7 +15,6 @@ const usersReducer = (state = {}, action) => {
 			const newServerUser = merge({}, currentServerUser, { joinedServerIds: newJoinedServerIds });
 			return merge({}, state, { [currentServerUserId]: newServerUser });
 		case UPDATE_JOINED_CHANNELS:
-			// debugger;
 			const currentChannelUserId = action.server.newMemberId || action.server.owner_id;
 			const currentChannelUser = state[currentChannelUserId];
 			const newJoinedChannelIds = currentChannelUser.joinedChannelIds.concat(action.channel.id);

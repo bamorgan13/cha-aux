@@ -16,10 +16,9 @@ const mdp = dispatch => {
 };
 
 const Logout = props => (
-	<button style={{ background: 'red', height: 80 }} onClick={() => props.logout()}>
-		<p>Logout {props.username}</p>
-		<p>(Temp Button)</p>
+	<button className="logout-button" onClick={() => props.logout()}>
 		<img className="user-icon" src={props.iconUrl} alt={`${props.username}_user_icon_image`} />
+		<p>Logout {props.username}</p>
 	</button>
 );
 

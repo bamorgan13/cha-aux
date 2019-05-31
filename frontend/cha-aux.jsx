@@ -18,6 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	} else {
 		store = configureStore();
 	}
-	window.store = store; //REMOVE
+	//window.store = store;
 	ReactDOM.render(<Root store={store} />, root);
 });

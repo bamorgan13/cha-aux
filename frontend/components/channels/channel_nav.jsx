@@ -13,10 +13,7 @@ class ChannelNav extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		// debugger;
-		// this.props.getServerChannels(this.props.currentServerId);
-	}
+	componentDidMount() {}
 
 	componentDidUpdate(prevProps) {
 		if (this.props.currentServerId) {
@@ -38,6 +35,7 @@ class ChannelNav extends React.Component {
 		}
 		return (
 			<nav className="channel-nav">
+				<h3 className="channel-nav-header">{this.props.currentServerName}</h3>
 				<ul className="channel-nav-list">{channelLis}</ul>
 				<TempLogout />
 			</nav>

@@ -107,7 +107,6 @@ class ServerNav extends React.Component {
 							</div>
 						</li>
 					</ul>
-					<TempLogout />
 				</nav>
 				{channelNav}
 				{tempJoinServer}
