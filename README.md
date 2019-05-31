@@ -53,10 +53,8 @@ We created a joinServer component that will allow the user to additionally join 
 The changes to the nav bar can be seen in the example images below. First we see the standard nav bar with the home icon at the top, followed by joined server icons. Next we see a nav bar when we are visiting a server that we have not joined. The server icon is at the top of the nav bar, before any joined servers. If we navigate away from the server without joining, it will revert back to the original, as seen in the first image. Finally, after joining the server, the icon is placed in our joined servers section and will remain there when we navigate away from the server.
 
 Standard Nav Bar:
-![standard nav bar](https://github.com/bamorgan13/cha-aux/tree/master/documentation/standard_nav_bar.png "Standard Nav Bar")
-
+![standard nav bar](documentation/standard_nav_bar.png "Standard Nav Bar")
 Visiting Nav Bar:
-![visiting nav bar](https://github.com/bamorgan13/cha-aux/tree/master/documentation/visiting_nav_bar.png "Visiting Nav Bar")
-
+![visiting nav bar](documentation/visiting_nav_bar.png "Visiting Nav Bar")
 Joined Nav Bar:
-![joined nav bar](https://github.com/bamorgan13/cha-aux/tree/master/documentation/joined_nav_bar.png "Joined Nav Bar")
+![joined nav bar](documentation/joined_nav_bar.png "Joined Nav Bar")
