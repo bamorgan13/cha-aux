@@ -1,6 +1,7 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { merge } from 'lodash';
 import { UPDATE_JOINED_SERVERS } from '../actions/server_actions';
+import { UPDATE_JOINED_CHANNELS } from '../actions/channel_actions';
 
 const usersReducer = (state = {}, action) => {
 	Object.freeze(state);
@@ -8,11 +9,18 @@ const usersReducer = (state = {}, action) => {
 		case RECEIVE_CURRENT_USER:
 			return merge({}, state, { [action.currentUser.id]: action.currentUser });
 		case UPDATE_JOINED_SERVERS:
-			const currentUserId = action.server.newMemberId || action.server.owner_id;
-			const currentUser = state[currentUserId];
-			const newJoinedServerIds = currentUser.joinedServerIds.concat(action.server.id);
-			const newUser = merge({}, currentUser, { joinedServerIds: newJoinedServerIds });
-			return merge({}, state, { [currentUserId]: newUser });
+			const currentServerUserId = action.server.newMemberId || action.server.owner_id;
+			const currentServerUser = state[currentServerUserId];
+			const newJoinedServerIds = currentServerUser.joinedServerIds.concat(action.server.id);
+			const newServerUser = merge({}, currentServerUser, { joinedServerIds: newJoinedServerIds });
+			return merge({}, state, { [currentServerUserId]: newServerUser });
+		case UPDATE_JOINED_CHANNELS:
+			// debugger;
+			const currentChannelUserId = action.server.newMemberId || action.server.owner_id;
+			const currentChannelUser = state[currentChannelUserId];
+			const newJoinedChannelIds = currentChannelUser.joinedChannelIds.concat(action.channel.id);
+			const newChannelUser = merge({}, currentChannelUser, { joinedChannelIds: newJoinedChannelIds });
+			return merge({}, state, { [currentChannelUserId]: newChannelUser });
 		default:
 			return state;
 	}

@@ -7,6 +7,7 @@ import { scalarArraysAreEqual } from '../../util/helper_functions';
 import TempJoinServer from '../temp_join_server';
 import TempLogout from '../temp_logout';
 import ServerIndex from './server_index_container';
+import ChannelNav from '../channels/channel_nav_container';
 
 class ServerNav extends React.Component {
 	constructor(props) {
@@ -44,12 +45,15 @@ class ServerNav extends React.Component {
 	render() {
 		const discoveryPage = this.props.location.pathname.split('/')[1] === 'server-discovery';
 		let serverIndex;
+		let channelNav;
 		let discoveryNavIndicatorClass = 'server-nav-selector-indicator';
 		let discoveryNavIconClass = 'server-nav-discovery-icon';
 		if (discoveryPage) {
 			serverIndex = <ServerIndex />;
 			discoveryNavIndicatorClass = discoveryNavIndicatorClass.concat(' active');
 			discoveryNavIconClass = discoveryNavIconClass.concat(' active');
+		} else {
+			channelNav = <ChannelNav currentServerId={this.state.currentServerId} />;
 		}
 		let serverLis;
 		const currentServerId = this.state.currentServerId;
@@ -105,6 +109,7 @@ class ServerNav extends React.Component {
 					</ul>
 					<TempLogout />
 				</nav>
+				{channelNav}
 				{tempJoinServer}
 				{serverIndex}
 				<ServerForm />

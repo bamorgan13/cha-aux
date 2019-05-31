@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/server_api_util';
 import { closeModal } from './modal_actions';
+import { updateJoinedChannels } from './channel_actions';
 
 export const RECEIVE_SERVERS = 'RECEIVE_SERVERS';
 export const RECEIVE_SERVER = 'RECEIVE_SERVER';
@@ -41,8 +42,13 @@ export const getServers = filters => dispatch => {
 };
 
 export const getServer = id => dispatch => {
-	return APIUtil.getServer(id).then(server =>
-		dispatch(receiveServer(server), errors => dispatch(receiveServerErrors(errors)))
+	return APIUtil.getServer(id).then(
+		server => {
+			return dispatch(receiveServer(server));
+		},
+		errors => {
+			return dispatch(receiveServerErrors(errors));
+		}
 	);
 };
 
@@ -51,7 +57,8 @@ export const createServer = server => dispatch => {
 		server => {
 			dispatch(receiveServer(server));
 			dispatch(closeModal());
-			return dispatch(updateJoinedServers(server));
+			dispatch(updateJoinedServers(server));
+			return dispatch(updateJoinedChannels(server, server.channelIds[0]));
 		},
 		errors => {
 			return dispatch(receiveServerErrors(errors));

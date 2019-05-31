@@ -4,17 +4,22 @@ import { getChannels, getChannel } from '../../actions/channel_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
-	const currentServerId = ownProps.currentServerId;
-	const serverChannelIds = state.entities.servers[currentServerId].channelIds;
-	const joinedChannelIds = state.entities.users[state.session.id].joinedChannelIds.filter(id =>
-		serverChannelIds.includes(id)
-	);
+	let currentServerId;
+	let joinedChannelIds;
 	let joinedChannels = {};
-	joinedChannelIds.forEach(id => {
-		if (Object.keys(state.entities.channels).includes(id.toString())) {
-			joinedChannels[id] = state.entities.servers[id];
-		}
-	});
+	if (ownProps.currentServerIds) {
+		currentServerId = ownProps.currentServerId;
+		const serverChannelIds = state.entities.servers[currentServerId].channelIds;
+		joinedChannelIds = state.entities.users[state.session.id].joinedChannelIds.filter(id =>
+			serverChannelIds.includes(id)
+		);
+		joinedChannelIds.forEach(id => {
+			if (Object.keys(state.entities.channels).includes(id.toString())) {
+				joinedChannels[id] = state.entities.servers[id];
+			}
+		});
+	}
+
 	return {
 		joinedChannelIds,
 		joinedChannels,
