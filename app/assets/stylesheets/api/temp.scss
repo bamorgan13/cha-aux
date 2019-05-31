@@ -2,9 +2,12 @@
 
 .server-join-button {
 	background: $green;
-	height: 80px;
-	width: 160px;
+	height: 70px;
+	width: 150px;
 	transition: 0.3s;
+	display: flex;
+	align-items: center;
+	padding: 5px;
 	&:hover {
 		background-color: green;
 		.server-join-icon {
@@ -16,6 +19,9 @@
 		width: 40px;
 		border-radius: 50%;
 		transition: 0.3s;
+	}
+	p {
+		margin-left: 5px;
 	}
 }
 // .logout-buton {

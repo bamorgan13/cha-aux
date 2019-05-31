@@ -18,9 +18,8 @@ const mdp = dispatch => {
 const JoinServer = ({ currentUserId, joinServer, server }) => {
 	return (
 		<button className="server-join-button" onClick={() => joinServer(server, currentUserId)}>
-			<p>Join {server.name}</p>
-			<p>(Temp Button)</p>
 			<img className="server-join-icon" src={server.icon_image} alt={`${server.name}_server_icon_image`} />
+			<p>Join {server.name}</p>
 		</button>
 	);
 };
