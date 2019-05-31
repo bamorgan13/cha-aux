@@ -31,6 +31,11 @@ class User < ApplicationRecord
     source: :joinable,
     source_type: :Server
 
+  has_many :joined_channels,
+    through: :memberships,
+    source: :joinable,
+    source_type: :Channel
+
   has_one_attached :icon_image
   
   attr_reader :password
