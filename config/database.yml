@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  # Here we make sure we can pass the connection URL for the database
+  url: <%= ENV['DATABASE_URL'] %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -80,6 +82,12 @@ test:
 #
 production:
   <<: *default
-  database: cha-aux_production
-  username: cha-aux
-  password: <%= ENV['CHA-AUX_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  host: db
+  username: postgres
+  # we don't need to specify a password
+  password:
+  
+  # database: cha-aux_production
+  # username: cha-aux
+  # password: <%= ENV['CHA-AUX_DATABASE_PASSWORD'] %>
