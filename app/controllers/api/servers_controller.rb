@@ -34,6 +34,9 @@ class Api::ServersController < ApplicationController
     if params[:newMemberId]
       @newMemberId = params[:newMemberId]
       @server.memberships.create({user_id: @newMemberId})
+      @server.channels.where(private: false).each do |channel|
+        channel.memberships.create({user_id: @newMemberId})
+      end
       render :show
     else (
       if @server.update(server_params)

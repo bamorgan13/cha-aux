@@ -75,11 +75,29 @@ wow = Server.create({name: "World of Warcraft", owner_id: gaben.id, private: fal
 wow.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/wow_icon.png'), filename:'wow_icon.png')
 
 # Server.all.each {|server| server.memberships.create({user_id: gaben.id})}
+Server.all.each {|server| server.channels.create({name: 'general'})}
 
 [bryce, zegyr, chaos, durango, jason, justin, emmett].each do |user|
   aa.memberships.create({user_id: user.id})
+  aa.channels.each do |channel|
+    channel.memberships.create({user_id: user.id})
+  end
   mtga.memberships.create({user_id: user.id})
+  mtga.channels.each do |channel|
+    channel.memberships.create({user_id: user.id})
+  end
 end
 
-[bryce, zegyr, chaos].each { |user| everyday.memberships.create({user_id: user.id})}
-[bryce, zegyr, durango, jason].each { |user| got.memberships.create({user_id: user.id})}
+[bryce, zegyr, chaos].each do |user|
+  everyday.memberships.create({user_id: user.id})
+  everyday.channels.each do |channel|
+    channel.memberships.create({user_id: user.id})
+  end
+end
+
+[bryce, zegyr, durango, jason].each do |user|
+  got.memberships.create({user_id: user.id})
+  got.channels.each do |channel|
+    channel.memberships.create({user_id: user.id})
+  end
+end

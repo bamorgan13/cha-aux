@@ -1,7 +1,7 @@
 class Api::ChannelsController < ApplicationController
   def index
     if params[:server_id]
-      @channels = Channel.find_by[server_id: params[:server_id]]
+      @channels = Channel.where(server_id: params[:server_id])
     elsif params[:dm_user_id]
       @channels = Channel.joins(:members).where(members: {id: params[:dm_user_id]})
     end

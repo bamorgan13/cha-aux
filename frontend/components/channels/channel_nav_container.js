@@ -5,9 +5,10 @@ import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
 	let currentServerId;
+	let currentChannelId;
 	let joinedChannelIds;
 	let joinedChannels = {};
-	if (ownProps.currentServerIds) {
+	if (ownProps.currentServerId) {
 		currentServerId = ownProps.currentServerId;
 		const serverChannelIds = state.entities.servers[currentServerId].channelIds;
 		joinedChannelIds = state.entities.users[state.session.id].joinedChannelIds.filter(id =>
@@ -15,9 +16,10 @@ const msp = (state, ownProps) => {
 		);
 		joinedChannelIds.forEach(id => {
 			if (Object.keys(state.entities.channels).includes(id.toString())) {
-				joinedChannels[id] = state.entities.servers[id];
+				joinedChannels[id] = state.entities.channels[id];
 			}
 		});
+		currentChannelId = joinedChannelIds.first;
 	}
 
 	return {
@@ -25,6 +27,8 @@ const msp = (state, ownProps) => {
 		joinedChannels,
 		currentServerId,
 		currentServerName: state.entities.servers[currentServerId],
+		currentChannelId,
+		currentChannelName: state.entities.channels[currentChannelId],
 		fetchedChannels: state.entities.channels,
 		fetchedChannelIds: Object.keys(state.entities.channels)
 	};

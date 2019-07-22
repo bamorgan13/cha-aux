@@ -16,11 +16,11 @@ class ChannelNav extends React.Component {
 	componentDidMount() {}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.currentServerId) {
+		if (this.props.currentServerId != prevProps.currentServerId) {
 			this.props.getServerChannels(this.props.currentServerId);
 		}
 		if (this.props.joinedChannelIds && this.props.joinedChannelIds.length > 0 && !this.state.currentChannelId) {
-			this.setState({ currentChannelId: this.props.joinedChannelIds.first });
+			this.setState({ currentChannelId: this.props.joinedChannelIds[0] });
 		}
 	}
 
@@ -30,12 +30,29 @@ class ChannelNav extends React.Component {
 		if (this.props.joinedChannels) {
 			channelLis = Object.values(this.props.joinedChannels).map(channel => {
 				const activeChannel = currentChannelId === channel.id ? 'active' : '';
-				return <ChannelNavItem key={channel.id} channel={channel} activeChannel={activeChannel} />;
+				return (
+					<ChannelNavItem
+						key={channel.id}
+						serverId={this.props.currentServerId}
+						channel={channel}
+						activeChannel={activeChannel}
+					/>
+				);
 			});
 		}
+		let serverHeader = this.props.currentServerName ? this.props.currentServerName.name : '';
 		return (
 			<nav className="channel-nav">
-				<h3 className="channel-nav-header">{this.props.currentServerName}</h3>
+				<div className="server-dropdown-container">
+					<button className="server-dropdown-button">
+						<h3 className="channel-nav-header">{serverHeader}</h3>
+						<p className="dropdown-indicator">∨</p>
+						<p className="dropdown-close hidden">✕</p>
+					</button>
+					<div className="server-dropdown hidden">
+						<button className="leave-server-button">Leave Server</button>
+					</div>
+				</div>
 				<ul className="channel-nav-list">{channelLis}</ul>
 				<TempLogout />
 			</nav>
