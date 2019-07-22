@@ -39,13 +39,19 @@ class ChannelNav extends React.Component {
 					/>
 				);
 			});
+			channelLis.unshift(
+				<div className="channels-header-container" key="header">
+					<h5 className="channels-header">Text Channels</h5>
+					<button className="create-channel-button">+</button>
+				</div>
+			);
 		}
 		let serverHeader = this.props.currentServerName ? this.props.currentServerName.name : '';
 		return (
 			<nav className="channel-nav">
 				<div className="server-dropdown-container">
 					<button className="server-dropdown-button">
-						<h3 className="channel-nav-header">{serverHeader}</h3>
+						<h3 className="server-nav-header">{serverHeader}</h3>
 						<p className="dropdown-indicator">∨</p>
 						<p className="dropdown-close hidden">✕</p>
 					</button>

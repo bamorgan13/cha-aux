@@ -7,7 +7,8 @@ const ChannelNavItem = ({ serverId, channel, activeChannel }) => {
 	return (
 		<li className="channel-nav-li">
 			<NavLink className="channel-nav-li-link" to={`/servers/${serverId}/channels/${channelId}`}>
-				<p className="channel-name"># {channelName}</p>
+				<span className="channel-symbol">#</span>
+				<p className="channel-name">{channelName}</p>
 			</NavLink>
 		</li>
 	);
