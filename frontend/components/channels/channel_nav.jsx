@@ -42,7 +42,13 @@ class ChannelNav extends React.Component {
 			channelLis.unshift(
 				<div className="channels-header-container" key="header">
 					<h5 className="channels-header">Text Channels</h5>
-					<button className="create-channel-button">+</button>
+					<button className="create-channel-button">
+						<div className="create-channel-label-container">
+							<p className="create-channel-label">Create Channel</p>
+						</div>
+						<div className="create-channel-arrow-down" />
+						+
+					</button>
 				</div>
 			);
 		}

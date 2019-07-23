@@ -46,9 +46,43 @@
 			font-size: 12px;
 			font-weight: 700;
 			text-transform: uppercase;
+
 			.create-channel-button {
 				font-weight: 400;
 				font-size: 28px;
+				position: relative;
+
+				&:hover {
+					.create-channel-label-container,
+					.create-channel-label,
+					.create-channel-arrow-down {
+						display: block;
+					}
+				}
+
+				.create-channel-label-container {
+					position: absolute;
+					top: -24px;
+					left: -40px;
+					display: none;
+					font-size: 14px;
+					background-color: black;
+					border-radius: 5px;
+					padding: 5px;
+					white-space: nowrap;
+					.create-channel-label {
+					}
+				}
+				.create-channel-arrow-down {
+					display: none;
+					position: absolute;
+					left: -2px;
+					width: 0;
+					height: 0;
+					border-top: 8px solid black;
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+				}
 			}
 		}
 		.channel-nav-li {
