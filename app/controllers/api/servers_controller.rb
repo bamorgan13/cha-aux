@@ -21,7 +21,8 @@ class Api::ServersController < ApplicationController
     if @server.save {
       @server.icon_image.attach(io: open('https://s3.amazonaws.com/cha-aux-seeds/default_icon.png'), filename:'default_icon.png') unless @server.icon_image.attached?
       @server.memberships.create({user_id: current_user.id})
-      @server.channels.create({name: 'general'})
+      general = @server.channels.create({name: 'general'})
+      general.memberships.create({user_id: current_user.id})
       render :show
     }
     else
