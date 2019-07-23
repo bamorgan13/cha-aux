@@ -8,7 +8,7 @@ const msp = (state, ownProps) => {
 	let currentChannelId;
 	let joinedChannelIds;
 	let joinedChannels = {};
-	if (ownProps.currentServerId) {
+	if (ownProps.currentServerId && state.entities.servers[ownProps.currentServerId]) {
 		currentServerId = ownProps.currentServerId;
 		const serverChannelIds = state.entities.servers[currentServerId].channelIds;
 		joinedChannelIds = state.entities.users[state.session.id].joinedChannelIds.filter(id =>
