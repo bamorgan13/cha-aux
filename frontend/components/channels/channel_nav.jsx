@@ -16,7 +16,7 @@ class ChannelNav extends React.Component {
 	componentDidMount() {}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.currentServerId != prevProps.currentServerId) {
+		if (this.props.currentServerId && this.props.currentServerId != prevProps.currentServerId) {
 			this.props.getServerChannels(this.props.currentServerId);
 		}
 		if (this.props.joinedChannelIds && this.props.joinedChannelIds.length > 0 && !this.state.currentChannelId) {
