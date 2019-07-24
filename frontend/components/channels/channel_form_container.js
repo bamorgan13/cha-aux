@@ -6,7 +6,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
 	return {
-		errors: state.errors.server,
+		errors: state.errors.channel,
 		modalOpen: state.ui.modal.open && state.ui.modal.form === 'channel',
 		serverId: ownProps.serverId
 	};

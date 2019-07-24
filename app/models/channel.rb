@@ -12,6 +12,7 @@
 
 class Channel < ApplicationRecord
   validates :name, presence: true
+  validates :name, uniqueness: { scope: :server_id, message: "must be unique to server"}
 
   belongs_to :server,
     optional: true

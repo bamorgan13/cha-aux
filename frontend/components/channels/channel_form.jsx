@@ -35,6 +35,7 @@ class ChannelForm extends React.Component {
 			e.target.className === 'channel-creation-modal-screen' ||
 			e.target.className === 'channel-creation-form-input-cancel'
 		) {
+			this.props.clearErrors();
 			this.props.closeModal();
 			this.clearInput();
 		}
