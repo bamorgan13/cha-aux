@@ -27,10 +27,9 @@ const receiveChannelErrors = errors => {
 	};
 };
 
-export const updateJoinedChannels = (server, channel) => {
+export const updateJoinedChannels = channel => {
 	return {
 		type: UPDATE_JOINED_CHANNELS,
-		server,
 		channel
 	};
 };

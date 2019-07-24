@@ -38,7 +38,7 @@ const mdp = dispatch => {
 	return {
 		getServerChannels: server_id => dispatch(getChannels({ server_id })),
 		getChannel: id => dispatch(getChannel(id)),
-		openModal: () => dispatch(openModal())
+		openModal: () => dispatch(openModal('channel'))
 	};
 };
 

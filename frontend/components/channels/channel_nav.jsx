@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ChannelNavItem from './channel_nav_item';
+import ChannelForm from './channel_form_container';
 
 import TempLogout from '../temp_logout';
 
@@ -8,6 +9,7 @@ class ChannelNav extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.handleCreationClick = this.handleCreationClick.bind(this);
 		this.state = {
 			currentChannelId: null
 		};
@@ -22,6 +24,11 @@ class ChannelNav extends React.Component {
 		if (this.props.joinedChannelIds && this.props.joinedChannelIds.length > 0 && !this.state.currentChannelId) {
 			this.setState({ currentChannelId: this.props.joinedChannelIds[0] });
 		}
+	}
+
+	handleCreationClick(e) {
+		e.preventDefault();
+		this.props.openModal();
 	}
 
 	render() {
@@ -42,7 +49,7 @@ class ChannelNav extends React.Component {
 			channelLis.unshift(
 				<div className="channels-header-container" key="header">
 					<h5 className="channels-header">Text Channels</h5>
-					<button className="create-channel-button">
+					<button className="create-channel-button" onClick={this.handleCreationClick}>
 						<div className="create-channel-label-container">
 							<p className="create-channel-label">Create Channel</p>
 						</div>
@@ -67,6 +74,7 @@ class ChannelNav extends React.Component {
 				</div>
 				<ul className="channel-nav-list">{channelLis}</ul>
 				<TempLogout />
+				<ChannelForm serverId={this.props.currentServerId} />
 			</nav>
 		);
 	}

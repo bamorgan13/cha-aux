@@ -23,7 +23,7 @@ const mdp = dispatch => {
 	return {
 		getJoinedServers: () => dispatch(getServers({ joined: true })),
 		getServer: id => dispatch(getServer(id)),
-		openModal: () => dispatch(openModal())
+		openModal: () => dispatch(openModal('server'))
 	};
 };
 

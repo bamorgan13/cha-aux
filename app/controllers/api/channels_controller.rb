@@ -15,6 +15,7 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
+    @userId = current_user.id
     if @channel.save
       if @channel.private
         @channel.memberships.create({user_id: current_user.id})
