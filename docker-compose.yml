@@ -10,9 +10,9 @@ services:
     # building our own docker image
     build:
       context: .
-      dockerfile: Dockerfile.web
+      dockerfile: Dockerfile
     # name our image
-    image: bamorgan13/cha-aux-web
+    image: bamorgan13/cha-aux-rails
     volumes:
       - .:/myapp
     ports:
@@ -22,14 +22,3 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://postgres@db
-  frontend:
-    # building our own docker image
-    build:
-      context: .
-      dockerfile: Dockerfile.frontend
-    image: bamorgan13/cha-aux-frontend
-    volumes:
-      - ".:/usr/src/app"
-      - "/usr/src/app/node_modules"
-    environment:
-      - NODE_ENV=production
