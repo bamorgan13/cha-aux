@@ -26,7 +26,7 @@ RUN npm run postinstall
 # PHASE TWO:
 # this will be the actual base image of the image we are building
 # We are going from the alpine version of ruby to save space
-FROM ruby:2.5.5-alpine3.9
+FROM ruby:2.5.1-alpine3.7
 
 # We tell the image `--no-cache` so we don't
 # clog up our image with the things we are downloading
